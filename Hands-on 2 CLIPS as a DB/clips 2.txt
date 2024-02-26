@@ -1,0 +1,95 @@
+        CLIPS (6.4.1 4/8/23)
+CLIPS> (assert(enfermedad diarrea))
+<Fact-1>
+CLIPS> (assert(enfermedad tos))
+<Fact-2>
+CLIPS> (assert(enfermedad migrana))
+<Fact-3>
+CLIPS> (assert(enfermedad gripa))
+<Fact-4>
+CLIPS> (assert(enfermedad alergia))
+<Fact-5>
+CLIPS> (assert(enfermedad asma))
+<Fact-6>
+CLIPS> (facts)
+f-1     (enfermedad diarrea)
+f-2     (enfermedad tos)
+f-3     (enfermedad migrana)
+f-4     (enfermedad gripa)
+f-5     (enfermedad alergia)
+f-6     (enfermedad asma)
+For a total of 6 facts.
+CLIPS> defrule diarrea (enfermedad diarrea) => (asser(--SINTOMAS-- 1.-dolor de estomago 2.-sudoracion)))
+defrule
+CLIPS> defrule tos (enfermedad tos) => (asser(--SINTOMAS-- 1.-irritacion de garganta 2.-dolor de garganta)))
+defrule
+CLIPS> (agenda)
+CLIPS> (rules)
+CLIPS> (defrule diarrea (enfermedad diarrea) => (assert(--SINTOMAS-- 1.-dolor de estomago 2.-sudoracion)))
+CLIPS> (rules)
+diarrea
+For a total of 1 defrule.
+CLIPS> (defrule tos (enfermedad tos) => (assert(--SINTOMAS-- 1.-irritacion de garganta 2.-dolor de garganta)))
+CLIPS> (rules)
+diarrea
+tos
+For a total of 2 defrules.
+CLIPS> (defrule migrana (enfermedad migrana) => (assert(--SINTOMAS-- 1.-dolor de cabeza 2.-dificultad para tolerar la luz y el ruido)))
+CLIPS> (defrule gripa (enfermedad gripa) => (assert(--SINTOMAS-- 1.-tos 2.-cuarpo cortado)))
+CLIPS> (defrule alergia (enfermedad alergia) => (assert(--SINTOMAS-- 1.-inflamacion 2.-ojos llorosos)))
+CLIPS> (defrule asma (enfermedad asma) => (assert(--SINTOMAS-- 1.-dificultad para respirar 2.-cansancio)))
+CLIPS> (rules)
+diarrea
+tos
+migrana
+gripa
+alergia
+asma
+For a total of 6 defrules.
+CLIPS> (run)
+CLIPS> (agenda)
+CLIPS> (facts)
+f-1     (enfermedad diarrea)
+f-2     (enfermedad tos)
+f-3     (enfermedad migrana)
+f-4     (enfermedad gripa)
+f-5     (enfermedad alergia)
+f-6     (enfermedad asma)
+f-7     (--SINTOMAS-- 1.-dificultad para respirar 2.-cansancio)
+f-8     (--SINTOMAS-- 1.-inflamacion 2.-ojos llorosos)
+f-9     (--SINTOMAS-- 1.-tos 2.-cuarpo cortado)
+f-10    (--SINTOMAS-- 1.-dolor de cabeza 2.-dificultad para tolerar la luz y el ruido)
+f-11    (--SINTOMAS-- 1.-irritacion de garganta 2.-dolor de garganta)
+f-12    (--SINTOMAS-- 1.-dolor de estomago 2.-sudoracion)
+For a total of 12 facts.
+CLIPS> (ppdefrules enfermedad diarrea)
+
+[EXPRNPSR3] Missing function declaration for 'ppdefrules'.
+CLIPS> (rules)
+diarrea
+tos
+migrana
+gripa
+alergia
+asma
+For a total of 6 defrules.
+CLIPS> (ppdefrule tos)
+(defrule MAIN::tos
+   (enfermedad tos)
+   =>
+   (assert (--SINTOMAS-- 1.-irritacion de garganta 2.-dolor de garganta)))
+CLIPS> (ppdefrule asma)
+(defrule MAIN::asma
+   (enfermedad asma)
+   =>
+   (assert (--SINTOMAS-- 1.-dificultad para respirar 2.-cansancio)))
+CLIPS> (save)
+[ARGACCES1] Function 'save' expected exactly 1 argument.
+CLIPS> save
+save
+CLIPS> (ppdefrule asma)
+(defrule MAIN::asma
+   (enfermedad asma)
+   =>
+   (assert (--SINTOMAS-- 1.-dificultad para respirar 2.-cansancio)))
+CLIPS>
